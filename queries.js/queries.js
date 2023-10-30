@@ -9,6 +9,23 @@ async function getDeparment(){
 }
 };
 
+async function getRole(){
+    try{
+        const result = await db.query('SELECT * FROM role');
+    return rows;
+} catch (error) {
+   throw error;
+}
+};
+
+async function getEmployee(){
+    try{
+        const result = await db.query('SELECT * FROM employee');
+    return rows;
+} catch (error) {
+   throw error;
+};
+};
 
 
 
@@ -16,4 +33,6 @@ async function getDeparment(){
 
 module.exports = {
     getDeparment,
+    getRole,
+    getEmployee
 }

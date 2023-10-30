@@ -1,3 +1,5 @@
 const inquierer = require('inquirer');
-const{ getDeparment } = require('./queries');
-
+const{ getDeparment,
+    getDeparment,
+    getRole,
+ } = require('./queries.js');
