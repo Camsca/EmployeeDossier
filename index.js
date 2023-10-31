@@ -1,5 +1,19 @@
 const inquierer = require('inquirer');
 const{ getDeparment,
-    getDeparment,
-    getRole,
- } = require('./queries.js');
+    addDeparment,
+    deleteDeparment,
+} = require('./queries/departmentQueries');
+
+const{ getRole,
+    addRole,
+    deleteDeparment,
+}=require('./queries/roleQueries');
+
+const{ getEmployee,
+    getEmployeeByManager,
+    getEmployeeByDepartment,
+    addEmployee,
+    updateEmployeeRole,
+    updateEmployeeManager,
+    deleteEmployee,
+}=require('./queries/employeeQueries');
