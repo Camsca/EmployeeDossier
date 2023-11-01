@@ -1,15 +1,16 @@
 const db = require ('../config/connection');
 
 //depament queries to get, add, and delete
-async function getDeparment(){
-    try{
+async function getDepartment() { // Use "getDepartment" here
+    try {
         const [row] = await db.query('SELECT * FROM department');
-    return row;
-} catch (error) {
-   throw error;
+        return row;
+    } catch (error) {
+        throw error;
+    }
 }
-};
-async function addDeparment(departmentName){
+
+async function addDepartment(departmentName){
     const sql = `INSERT INTO department (name) VALUES (?)`;
     const values = [departmentName];
 
@@ -24,7 +25,7 @@ async function addDeparment(departmentName){
 
 
 
-async function deleteDeparment(departmentId){
+async function deleteDepartment(departmentId){
     const sql = `DELETE FROM department WHERE id = ?`;
     const values = [departmentId];
 
@@ -39,7 +40,7 @@ async function deleteDeparment(departmentId){
 };
 
 module.exports = {
-    getDeparment,
-    addDeparment,
-  deleteDeparment,
+    getDepartment,
+    addDepartment,
+  deleteDepartment,
 };

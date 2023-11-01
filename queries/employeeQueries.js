@@ -8,28 +8,6 @@ async function getEmployee(){
 }
 };
 
-async function getEmployeeByManager(manager_id){
-    const sql = `SELECT * FROM employee WHERE manager_id = ?`;
-const values = [manager_id];
-try{
-    const [result] = await db.query(sql, values);
-    return result;
-}catch(error) {
-    throw error;
-}
-};
- 
-async function getEmployeeByDepartment(){
-    const sql = `SELECT * FROM employee WHERE department_id = ?`;
-    const values = [departmentId];
-    try{
-        const [result] = await db.query(sql, values);
-        return result;
-    }catch(error) {
-        throw error;
-    } 
-
-};
 async function addEmployee( firstName, lastName, roleId, managerId){
     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`;
     const values = [firstName, lastName, roleId, managerId];
@@ -72,8 +50,6 @@ async function updateEmployeeManager(managerId, employeeId){
         }
     };
 module.exports = { getEmployee,
-    getEmployeeByManager,
-    getEmployeeByDepartment,
     addEmployee,
     updateEmployeeRole,
     updateEmployeeManager,

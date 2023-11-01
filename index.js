@@ -15,15 +15,14 @@ const {
 
 const {
   getEmployee,
-  getEmployeeByManager,
-  getEmployeeByDepartment,
   addEmployee,
   updateEmployeeRole,
   updateEmployeeManager,
   deleteEmployee,
 } = require('./queries/employeeQueries');
+const { displaycuteMessage } = require('./figlet/figlate');
 
-async function main() {
+async function displayMainMenu() {
   const answer = await inquirer.prompt([
     {
       type: 'list',
@@ -136,18 +135,7 @@ async function main() {
       const employees = await getEmployee();
       console.table(employees);
       break;
-    case 'View All Employees By Manager':
-      const managerId = await inquirer.prompt([
-        {
-          type: 'input',
-          name: 'managerId',
-          message: 'Enter the Manager ID:',
-        },
-      ]);
-      console.log('Manager ID provided:', managerIdInput.managerId);
-  const employeesByManager = await getEmployeeByManager(managerIdInput.managerId);
-  console.log('Employees by Manager:', employeesByManager);
-  break;
+   
     case 'Add Employee':
         const employee = await inquirer.prompt([
             {
@@ -223,10 +211,16 @@ async function main() {
     case 'Exit':
       console.log('Goodbye!');
       process.exit(0);
-      break;
+      
 
     default:
       console.log('Invalid choice');
+  }
+}
+async function main() {
+  displaycuteMessage();
+  while (true) {
+    await displayMainMenu();
   }
 }
 
